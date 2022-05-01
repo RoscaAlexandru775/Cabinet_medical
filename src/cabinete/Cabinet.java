@@ -8,7 +8,7 @@ public class Cabinet {
     public Cabinet(int numar, int etaj, String sectie) {
         this.numar = numar;
         this.etaj = etaj;
-        Sectie = sectie;
+        this.Sectie = sectie;
     }
     public Cabinet()
     {
