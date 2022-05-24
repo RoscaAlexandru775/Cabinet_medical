@@ -19,4 +19,19 @@ public class ProgramarePacient extends Programare{
     public void setPret(int pret) {
         this.pret = pret;
     }
+
+    @Override
+    public String toString() {
+        return "ProgramarePacient{" +
+                "numePacient='" + numePacient + '\'' +
+                ", prenumePacient='" + prenumePacient + '\'' +
+                ", numeMedic='" + numeMedic + '\'' +
+                ", prenumeMedic='" + prenumeMedic + '\'' +
+                ", adresaClinica='" + adresaClinica + '\'' +
+                ", dataInceputProgramare='" + dataInceputProgramare + '\'' +
+                ", dataSfarsitProgramare='" + dataSfarsitProgramare + '\'' +
+                ", numarCabinet=" + numarCabinet +
+                ", pret=" + pret +
+                '}';
+    }
 }

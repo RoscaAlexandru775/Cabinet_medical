@@ -19,4 +19,19 @@ public class ProgramareMedic extends Programare{
     public void setDescriereProblemaPacient(String descriereProblemaPacient) {
         this.descriereProblemaPacient = descriereProblemaPacient;
     }
+
+    @Override
+    public String toString() {
+        return "ProgramareMedic{" +
+                "numePacient='" + numePacient + '\'' +
+                ", prenumePacient='" + prenumePacient + '\'' +
+                ", numeMedic='" + numeMedic + '\'' +
+                ", prenumeMedic='" + prenumeMedic + '\'' +
+                ", adresaClinica='" + adresaClinica + '\'' +
+                ", dataInceputProgramare='" + dataInceputProgramare + '\'' +
+                ", dataSfarsitProgramare='" + dataSfarsitProgramare + '\'' +
+                ", numarCabinet=" + numarCabinet +
+                ", descriereProblemaPacient='" + descriereProblemaPacient + '\'' +
+                '}';
+    }
 }

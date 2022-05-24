@@ -1,5 +1,7 @@
 package medici;
 
+import java.util.Objects;
+
 public class Medic {
     private String nume;
     private String prenume;
@@ -86,5 +88,21 @@ public class Medic {
 
     public void setSpecilizare(String specilizare) {
         this.specilizare = specilizare;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Medic{" +
+                "nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", gen='" + gen + '\'' +
+                ", dataNastere='" + dataNastere + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", email='" + email + '\'' +
+                ", adresa='" + adresa + '\'' +
+                ", specilizare='" + specilizare + '\'' +
+                '}';
     }
 }

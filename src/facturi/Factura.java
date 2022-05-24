@@ -1,5 +1,7 @@
 package facturi;
 
+import java.util.Objects;
+
 public class Factura {
     private String metodaDePlata;
     private String numePacient;
@@ -108,5 +110,22 @@ public class Factura {
 
     public void setTotalDePlata(double totalDePlata) {
         this.totalDePlata = totalDePlata;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Factura{" +
+                "metodaDePlata='" + metodaDePlata + '\'' +
+                ", numePacient='" + numePacient + '\'' +
+                ", prenumePacient='" + prenumePacient + '\'' +
+                ", numeMedic='" + numeMedic + '\'' +
+                ", prenumeMedic='" + prenumeMedic + '\'' +
+                ", dataEmitere='" + dataEmitere + '\'' +
+                ", numeServiciu='" + numeServiciu + '\'' +
+                ", pret=" + pret +
+                ", tva=" + tva +
+                ", totalDePlata=" + totalDePlata +
+                '}';
     }
 }

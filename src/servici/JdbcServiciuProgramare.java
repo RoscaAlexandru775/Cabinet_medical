@@ -1,7 +1,6 @@
 package servici;
 
 import com.opencsv.CSVWriter;
-import pacienti.Pacient;
 import programari.Programare;
 
 import java.io.File;
@@ -30,25 +29,56 @@ public class JdbcServiciuProgramare {
 
         return  single_instance;
     }
-    public static void adaugareProgramare(Programare programare) {
+    public static boolean adaugareProgramare(Programare programare) {
 
         try {
             Integer numarCabinet = programare.getNumarCabinet();
             Connection connection = DriverManager.getConnection(JDBC_DB_URL,JDBC_USER,JDBC_PASS);
-            String insertStr = "INSERT INTO  programare VALUES(null,?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement pst = connection.prepareStatement(insertStr)) {
-                pst.setString(1, programare.getNumePacient());
-                pst.setString(2, programare.getPrenumePacient());
-                pst.setString(3, programare.getNumeMedic());
-                pst.setString(4, programare.getPrenumeMedic());
-                pst.setString(5, programare.getAdresaClinica());
-                pst.setString(6, programare.getDataInceputProgramare());
-                pst.setString(7, programare.getDataSfarsitProgramare());
-                pst.setString(8, numarCabinet.toString());
-                pst.executeUpdate();
-            }catch (Exception e)
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from medic");
+            boolean exist = false;
+            while (resultSet.next() && exist == false) {
+
+                if(resultSet.getString("nume").equals(programare.getNumeMedic()))
+                {
+                    exist = true;
+
+                }
+
+            }
+
+            if(exist == true)
             {
-                e.printStackTrace();
+                ResultSet resultSet2 = statement.executeQuery("select * from pacient");
+                boolean exist2 = false;
+                while (resultSet2.next() && exist2 == false) {
+
+                    if(resultSet2.getString("nume").equals(programare.getNumePacient()))
+                    {
+                        exist2 = true;
+
+                    }
+
+                }
+                if(exist2 == true) {
+                    String insertStr = "INSERT INTO  programare VALUES(null,?, ?, ?, ?, ?, ?, ?, ?)";
+                    try (PreparedStatement pst = connection.prepareStatement(insertStr)) {
+                        pst.setString(1, programare.getNumePacient());
+                        pst.setString(2, programare.getPrenumePacient());
+                        pst.setString(3, programare.getNumeMedic());
+                        pst.setString(4, programare.getPrenumeMedic());
+                        pst.setString(5, programare.getAdresaClinica());
+                        pst.setString(6, programare.getDataInceputProgramare());
+                        pst.setString(7, programare.getDataSfarsitProgramare());
+                        pst.setString(8, numarCabinet.toString());
+                        pst.executeUpdate();
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    return true;
+                }
             }
 
 
@@ -56,6 +86,7 @@ public class JdbcServiciuProgramare {
         {
             e.printStackTrace();
         }
+        return false;
 
     }
     public List<Programare> citireProgramari() {

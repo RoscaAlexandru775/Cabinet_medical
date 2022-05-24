@@ -76,7 +76,7 @@ public class JdbcServiciuMedic {
         return list;
 
     }
-    public static void  modificareMedic(int Id , Medic medic) {
+    public static boolean modificareMedic(int Id , Medic medic) {
 
         try {
             Connection connection = DriverManager.getConnection(JDBC_DB_URL,JDBC_USER,JDBC_PASS);
@@ -93,13 +93,30 @@ public class JdbcServiciuMedic {
                     "', specializare = '" + medic.getSpecilizare() +
                     "' WHERE Id = "+ Id + ";";
 
-            statement.executeUpdate(sql);
+            ResultSet resultSet = statement.executeQuery("select * from medic");
+            boolean exist = false;
+            while (resultSet.next() && exist == false) {
+
+                if(resultSet.getInt("Id") == Id)
+                {
+                    exist = true;
+
+                }
+
+            }
+
+            if(exist == true)
+            {
+
+                statement.executeUpdate(sql);
+                return true;
+            }
         } catch (Exception e)
         {
             e.printStackTrace();
         }
 
-
+        return false;
 
     }
     public static void  stergereMedic(int Id) {

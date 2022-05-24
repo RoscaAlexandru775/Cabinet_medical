@@ -1,5 +1,7 @@
 package cabinete;
 
+import java.util.Objects;
+
 public class Cabinet implements Comparable<Cabinet> {
     private int numar;
     private int etaj;
@@ -14,6 +16,8 @@ public class Cabinet implements Comparable<Cabinet> {
     {
 
     }
+
+
 
     public int getNumar() {
         return numar;
@@ -37,6 +41,28 @@ public class Cabinet implements Comparable<Cabinet> {
 
     public void setSectie(String sectie) {
         Sectie = sectie;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cabinet cabinet = (Cabinet) o;
+        return numar == cabinet.numar && etaj == cabinet.etaj && Objects.equals(Sectie, cabinet.Sectie);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numar, etaj, Sectie);
+    }
+
+    @Override
+    public String toString() {
+        return "Cabinet{" +
+                "numar=" + numar +
+                ", etaj=" + etaj +
+                ", Sectie='" + Sectie + '\'' +
+                '}';
     }
 
     @Override

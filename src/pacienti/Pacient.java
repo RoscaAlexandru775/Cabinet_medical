@@ -1,5 +1,7 @@
 package pacienti;
 
+import java.util.Objects;
+
 public class Pacient {
 
     protected String nume;
@@ -91,4 +93,17 @@ public class Pacient {
     }
 
 
+    @Override
+    public String toString() {
+        return "Pacient{" +
+                "nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", gen='" + gen + '\'' +
+                ", dataNastere='" + dataNastere + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", grupaSanguina='" + grupaSanguina + '\'' +
+                ", email='" + email + '\'' +
+                ", adresa='" + adresa + '\'' +
+                '}';
+    }
 }

@@ -51,4 +51,22 @@ public class PacientAbonat extends Pacient{
     public void setProcentDiscount(int procentDiscount) {
         this.procentDiscount = procentDiscount;
     }
+
+    @Override
+    public String toString() {
+        return "PacientAbonat{" +
+                "nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", gen='" + gen + '\'' +
+                ", dataNastere='" + dataNastere + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", grupaSanguina='" + grupaSanguina + '\'' +
+                ", email='" + email + '\'' +
+                ", adresa='" + adresa + '\'' +
+                ", dataIneputAbonament='" + dataIneputAbonament + '\'' +
+                ", dataSfarsitAbonament='" + dataSfarsitAbonament + '\'' +
+                ", tipAbonament='" + tipAbonament + '\'' +
+                ", procentDiscount=" + procentDiscount +
+                '}';
+    }
 }

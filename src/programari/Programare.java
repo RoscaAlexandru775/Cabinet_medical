@@ -88,4 +88,18 @@ public class Programare {
     public void setNumarCabinet(int numarCabinet) {
         this.numarCabinet = numarCabinet;
     }
+
+    @Override
+    public String toString() {
+        return "Programare{" +
+                "numePacient='" + numePacient + '\'' +
+                ", prenumePacient='" + prenumePacient + '\'' +
+                ", numeMedic='" + numeMedic + '\'' +
+                ", prenumeMedic='" + prenumeMedic + '\'' +
+                ", adresaClinica='" + adresaClinica + '\'' +
+                ", dataInceputProgramare='" + dataInceputProgramare + '\'' +
+                ", dataSfarsitProgramare='" + dataSfarsitProgramare + '\'' +
+                ", numarCabinet=" + numarCabinet +
+                '}';
+    }
 }

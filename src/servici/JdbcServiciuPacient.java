@@ -1,7 +1,6 @@
 package servici;
 
 import com.opencsv.CSVWriter;
-import medici.Medic;
 import pacienti.Pacient;
 
 import java.io.File;
@@ -78,30 +77,65 @@ public class JdbcServiciuPacient {
         return list;
 
     }
-    public static void  modificarePacient(int Id , Pacient pacient) {
+    public static boolean modificarePacient(int Id , Pacient pacient) {
 
         try {
             Connection connection = DriverManager.getConnection(JDBC_DB_URL,JDBC_USER,JDBC_PASS);
             Statement statement = connection.createStatement();
-            String sql = "UPDATE pacient " +
-                    "SET Id = " + Id +
-                    ",nume = '" + pacient.getNume() +
-                    "', prenume = '" + pacient.getPrenume() +
-                    "', gen = '" + pacient.getGen() +
-                    "', dataNastere = '" + pacient.getDataNastere() +
-                    "', cnp = '" + pacient.getCnp() +
-                    "', grupaSanguina = '" + pacient.getGrupaSanguina() +
-                    "', email = '" + pacient.getEmail() +
-                    "', adresa = '" + pacient.getAdresa() +
-                    "' WHERE Id = "+ Id + ";";
+            String updateQuery = "update pacient set Id=?,nume=?, prenume=?, gen=? ,dataNastere =?,cnp=?,grupaSanguina =?, email=?, adresa=? where Id='"
+                    + Id + "'";
+            PreparedStatement ps1 = connection.prepareStatement(updateQuery);
+            ps1.setString(2, pacient.getNume());
+            ps1.setString(3, pacient.getPrenume());
+            ps1.setString(4, pacient.getGen());
+            ps1.setString(5, pacient.getDataNastere());
+            ps1.setString(6, pacient.getCnp());
+            ps1.setString(7, pacient.getGrupaSanguina());
+            ps1.setString(8, pacient.getEmail());
+            ps1.setString(9, pacient.getAdresa());
+            ps1.setInt(1, Id);
+//            ps1.executeUpdate();
+//            System.out.println("updated successfully");
+//
+//
+//            String sql = "UPDATE pacient " +
+//                    "SET Id = " + Id +
+//                    ",nume = '" + pacient.getNume() +
+//                    "', prenume = '" + pacient.getPrenume() +
+//                    "', gen = '" + pacient.getGen() +
+//                    "', dataNastere = '" + pacient.getDataNastere() +
+//                    "', cnp = '" + pacient.getCnp() +
+//                    "', grupaSanguina = '" + pacient.getGrupaSanguina() +
+//                    "', email = '" + pacient.getEmail() +
+//                    "', adresa = '" + pacient.getAdresa() +
+//                    "' WHERE Id = "+ Id + ";";
 
-            statement.executeUpdate(sql);
+            ResultSet resultSet = statement.executeQuery("select * from pacient");
+            boolean exist = false;
+            while (resultSet.next() && exist == false) {
+
+               if(resultSet.getInt("Id") == Id)
+               {
+                   exist = true;
+
+               }
+
+            }
+
+            if(exist == true)
+            {
+                ps1.executeUpdate();
+                //statement.executeUpdate(sql);
+                return true;
+            }
+
+
         } catch (Exception e)
         {
             e.printStackTrace();
         }
 
-
+        return false;
 
     }
     public static void  stergerePacient(int Id) {
