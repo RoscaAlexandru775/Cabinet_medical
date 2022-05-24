@@ -1,1 +1,3 @@
-alex, rosca, popa, alin, 12/09/2022 14:00, 12/09/2022 14:30, strada Sarariei, 4
+"index","numePacient","prenumePacient","numeMedic","prenumeMedic","adresaClinica","dataInceputProgramare","dataSfarsitProgramare","numarCabinet"
+"1","alex","rosca","curea","madalin","Iasi","29/09/2022","29/09/2022","3"
+"2","andrei","popa","teletin","andreea","Sibiu","30/09/2022","30/09/2022","2"

@@ -1,7 +1,9 @@
-package pacienti;
+package servici;
 import cabinete.Cabinet;
 import facturi.Factura;
 import medici.Medic;
+import pacienti.Pacient;
+import pacienti.PacientAbonat;
 import programari.Programare;
 import servici.*;
 
@@ -14,28 +16,36 @@ public class Main {
 
 
         //incarcare date din fisiere
-        Serviciu_Pacient serviciu_pacient = Serviciu_Pacient.getInstance();
-        Serciciu_Medic serciciu_medic = Serciciu_Medic.getInstance();
-        Serviciu_Cabinet serviciu_cabinet = Serviciu_Cabinet.getInstance();
-        Serviciu_Programare serviciu_programare = Serviciu_Programare.getInstance();
-        Serviciu_log serviciu_log = Serviciu_log.getInstance();
+        ServiciuPacient serviciuPacient = ServiciuPacient.getInstance();
+        ServiciuMedic serviciuMedic = ServiciuMedic.getInstance();
+        ServiciuCabinet serviciuCabinet = ServiciuCabinet.getInstance();
+        ServiciuProgramare serviciuProgramare = ServiciuProgramare.getInstance();
+        ServiciuLog serviciuLog = ServiciuLog.getInstance();
 
 
-        //
+
         Scanner scanner = new Scanner(System.in);
         List<Pacient> pacientList = new ArrayList<Pacient>();
         List<Medic> medicList = new ArrayList<Medic>();
         List<Factura> facturaList = new ArrayList<Factura>();
         List<Programare> programareList = new ArrayList<Programare>();
 
-        SortedSet<Cabinet> cabinetSortedSet = new TreeSet<Cabinet>();
+        SortedSet<Cabinet> cabinetSortedSet = new TreeSet<>();
 
 
-        pacientList = serviciu_pacient.citirePacient();
-        medicList = serciciu_medic.citireMedic();
-        //serviciu_cabinet.citireCabinet();
-        //ramas de suprascris functia compare pentru Cabinet
-        programareList = serviciu_programare.citireProgramare();
+        pacientList = serviciuPacient.citirePacient();
+        medicList = serviciuMedic.citireMedic();
+        cabinetSortedSet = serviciuCabinet.citireCabinet();
+        programareList = serviciuProgramare.citireProgramare();
+
+        serviciuPacient.scrierePacienti("src\\scrierePacient.csv", pacientList);
+        serviciuLog.scriereInformatii("src\\scriereLog.csv", "scriere pacienti csv");
+        serviciuMedic.scriereMedici("src\\scriereMedic.csv", medicList);
+        serviciuLog.scriereInformatii("src\\scriereLog.csv", "scriere medici csv");
+        serviciuCabinet.scriereCabinet("src\\scriereCabinet.csv", cabinetSortedSet);
+        serviciuLog.scriereInformatii("src\\scriereLog.csv", "scriere cabinete csv");
+        serviciuProgramare.scriereProgramari("src\\scriereProgramare.csv", programareList);
+        serviciuLog.scriereInformatii("src\\scriereLog.csv", "scriere programari csv");
 
 
         Pacient pacient = new Pacient();
@@ -58,47 +68,47 @@ public class Main {
 
         switch (x){
             case 1:
-                serviciu_log.scriereInformatii("src\\log.csv", "Adaugare pacient");
+                serviciuLog.scriereInformatii("src\\log.csv", "Adaugare pacient");
                 Serviciu.adaugarePacient(pacientList);
                 break;
             case 2:
-                serviciu_log.scriereInformatii("src\\log.csv", "Modificare date pacient");
+                serviciuLog.scriereInformatii("src\\log.csv", "Modificare date pacient");
                 Serviciu.modificareDatePacient(pacient);
                 break;
             case 3:
-                serviciu_log.scriereInformatii("src\\log.csv", "Adaugare medic");
+                serviciuLog.scriereInformatii("src\\log.csv", "Adaugare medic");
                 Serviciu.adaugareMedic(medicList);
                  break;
             case 4:
-                serviciu_log.scriereInformatii("src\\log.csv", "Modificare date medic");
+                serviciuLog.scriereInformatii("src\\log.csv", "Modificare date medic");
                 Serviciu.modificareDateMedic(new Medic());
                 break;
             case 5:
-                serviciu_log.scriereInformatii("src\\log.csv", "Adaugare cabinet");
+                serviciuLog.scriereInformatii("src\\log.csv", "Adaugare cabinet");
                 Serviciu.adaugareCabinet(cabinetSortedSet);
                 break;
             case 6:
-                serviciu_log.scriereInformatii("src\\log.csv", "Creare factura");
+                serviciuLog.scriereInformatii("src\\log.csv", "Creare factura");
                 Serviciu.creareFactura(facturaList);
                 break;
             case 7:
-                serviciu_log.scriereInformatii("src\\log.csv", "Creare proramari");
+                serviciuLog.scriereInformatii("src\\log.csv", "Creare proramari");
                 Serviciu.plataAbonament(pacientAbonat);
                 break;
             case 8:
-                serviciu_log.scriereInformatii("src\\log.csv", "Plata abonament");
+                serviciuLog.scriereInformatii("src\\log.csv", "Plata abonament");
                 Serviciu.creareProgramare(programareList);
                 break;
             case 9:
-                serviciu_log.scriereInformatii("src\\log.csv", "Afisare programare pacient");
+                serviciuLog.scriereInformatii("src\\log.csv", "Afisare programare pacient");
                 Serviciu.afisareProgramarePacient(programareList);
                 break;
             case 10:
-                serviciu_log.scriereInformatii("src\\log.csv", "Afisare programare medic");
+                serviciuLog.scriereInformatii("src\\log.csv", "Afisare programare medic");
                 Serviciu.afisareProgramareMedic(programareList);
                 break;
             case 11:
-                serviciu_log.scriereInformatii("src\\log.csv", "Afisare informatii cabinet");
+                serviciuLog.scriereInformatii("src\\log.csv", "Afisare informatii cabinet");
                 Serviciu.afisareCabinet(cabinetSortedSet);
                 break;
         }

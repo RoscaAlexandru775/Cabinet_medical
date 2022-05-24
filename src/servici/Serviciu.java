@@ -363,6 +363,22 @@ public class Serviciu {
 
         medicList.add(medic);
     }
+    public static void afisareMedic(List<Medic> medicList) {
+        Scanner scanner = new Scanner(System.in);
+
+        Medic medic = new Medic();
+
+        System.out.println("Nume: " + medic.getNume());
+        System.out.println("Prenume: " + medic.getPrenume());
+        System.out.println("Gen: " + medic.getGen());
+        System.out.println("Data nastere: " + medic.getDataNastere());
+        System.out.println("Cnp: " + medic.getCnp());
+        System.out.println("Email medic: " + medic.getEmail());
+        System.out.println("Adresa medic: " + medic.getAdresa());
+        System.out.println("Specializare medic: " + medic.getSpecilizare());
+
+
+    }
     public static void modificareDateMedic (Medic medic) {
 
         Scanner scanner = new Scanner(System.in);
@@ -432,33 +448,6 @@ public class Serviciu {
         System.out.println("Email medic: " + medic.getEmail());
         System.out.println("Adresa medic: " + medic.getAdresa());
         System.out.println("Specializare medic: " + medic.getSpecilizare());
-
-    }
-    public static void adaugareCabinet (SortedSet<Cabinet> cabinetSortedSet){
-
-        Scanner scanner = new Scanner(System.in);
-
-        Cabinet cabinet = new Cabinet();
-
-        System.out.println("Numar cabinnet");
-        Integer numar = scanner.nextInt();
-        cabinet.setNumar(numar);
-        scanner.nextLine();
-
-        System.out.println("Etaj cabinet");
-        Integer etaj = scanner.nextInt();
-        cabinet.setEtaj(etaj);
-        scanner.nextLine();
-
-        System.out.println("Sectie cabinet");
-        String sectie = scanner.nextLine();
-        cabinet.setSectie(sectie);
-
-        System.out.println("Numar cabinet: " + cabinet.getNumar());
-        System.out.println("Etaj cabinet: " + cabinet.getEtaj());
-        System.out.println("Sectie cabinet: " + cabinet.getSectie());
-
-        cabinetSortedSet.add(cabinet);
 
     }
     public static void creareFactura(List<Factura> facturaList){
@@ -731,6 +720,33 @@ public class Serviciu {
         }
 
     }
+    public static void adaugareCabinet (SortedSet<Cabinet> cabinetSortedSet){
+
+        Scanner scanner = new Scanner(System.in);
+
+        Cabinet cabinet = new Cabinet();
+
+        System.out.println("Numar cabinnet");
+        Integer numar = scanner.nextInt();
+        cabinet.setNumar(numar);
+        scanner.nextLine();
+
+        System.out.println("Etaj cabinet");
+        Integer etaj = scanner.nextInt();
+        cabinet.setEtaj(etaj);
+        scanner.nextLine();
+
+        System.out.println("Sectie cabinet");
+        String sectie = scanner.nextLine();
+        cabinet.setSectie(sectie);
+
+        System.out.println("Numar cabinet: " + cabinet.getNumar());
+        System.out.println("Etaj cabinet: " + cabinet.getEtaj());
+        System.out.println("Sectie cabinet: " + cabinet.getSectie());
+
+        cabinetSortedSet.add(cabinet);
+
+    }
     public static void afisareCabinet(SortedSet<Cabinet> cabinetSortedSet){
         Scanner scanner = new Scanner(System.in);
         Integer numarCabinet = scanner.nextInt();
@@ -748,125 +764,4 @@ public class Serviciu {
         }
     }
 
-//    public static void main(String[] args) throws ParseException {
-////
-//////        List <Pacient> pacientList = new ArrayList<Pacient>();
-//////        adaugarePacient(pacientList);
-//////        //adaugarePacient(pacientList);
-////
-//////        for(Pacient pacient: pacientList) {
-//////
-//////            modificareDatePacient(pacient);
-//////            if(pacient.getClass() == PacientAbonat.class)
-//////            {
-//////                System.out.println("Nume: " + pacient.getNume());
-//////                System.out.println("Prenume: " + pacient.getPrenume());
-//////                System.out.println("Gen: " + pacient.getGen());
-//////                System.out.println("Data nastere: " + pacient.getDataNastere());
-//////                System.out.println("Cnp: " + pacient.getCnp());
-//////                System.out.println("Grupa sanguina: " + pacient.getGrupaSanguina());
-//////                System.out.println("Email pacient: " + pacient.getEmail());
-//////                System.out.println("Adresa pacient: " + pacient.getAdresa());
-//////                System.out.println("Data inceput abonament: " + ((PacientAbonat)pacient).getDataIneputAbonament());
-//////                System.out.println("Data sfarsit abonament: " + ((PacientAbonat)pacient).getDataSfarsitAbonament());
-//////                System.out.println("Tip abonament: " + ((PacientAbonat)pacient).getTipAbonament());
-//////                System.out.println("Procent discount: " + ((PacientAbonat)pacient).getProcentDiscount());
-//////                System.out.println();
-//////                System.out.println();
-//////
-//////            }
-//////           else
-//////           {
-//////                System.out.println("Nume: " + pacient.getNume());
-//////                System.out.println("Prenume: " + pacient.getPrenume());
-//////                System.out.println("Gen: " + pacient.getGen());
-//////                System.out.println("Data nastere: " + pacient.getDataNastere());
-//////                System.out.println("Cnp: " + pacient.getCnp());
-//////                System.out.println("Grupa sanguina: " + pacient.getGrupaSanguina());
-//////                System.out.println("Email pacient: " + pacient.getEmail());
-//////                System.out.println("Adresa pacient: " + pacient.getAdresa());
-//////                System.out.println();
-//////            }
-//////        }
-////
-////        //Programare programare = new Programare("alex","rosca","popa","alin","strada Sarariei","12/09/2022 14:00","12/09/2022 14:30",4);
-////        //ProgramarePacient programarePacient = new ProgramarePacient("alex","rosca","popa","alin","strada Sarariei","12/09/2022 14:00","12/09/2022 14:30",4,5);
-////
-////
-////
-////        List<Programare> programareList= new ArrayList<Programare>();
-//////        //creareProgramare(programareList);
-//////        //creareProgramare(programareList);
-////        Programare programare = new Programare("alex","rosca","popa","alin","strada Sarariei","12/09/2022 14:00","12/09/2022 14:30",4);
-////        ProgramarePacient programarePacient = new ProgramarePacient("alex","rosca","popa","alin","strada Sarariei","12/09/2022 14:00","12/09/2022 14:30",4,5);
-////        ProgramareMedic programareMedic = new ProgramareMedic("alex","rosca","popa","alin","strada Sarariei","12/09/2022 14:00","12/09/2022 14:30",4,"carie");
-////
-////        programareList.add(programare);
-////        programareList.add(programarePacient);
-////        programareList.add(programareMedic);
-////
-////        afisareProgramarePacient(programareList);
-////        afisareProgramareMedic(programareList);
-////
-////
-//////        for(Programare p: programareList)
-//////        {
-//////            if(p.getClass() == ProgramarePacient.class)
-//////            {
-//////                System.out.println("Nume pacient: " + p.getNumePacient());
-//////                System.out.println("Prenume pacient: " + p.getPrenumePacient());
-//////                System.out.println("Nume medic: " + p.getNumeMedic());
-//////                System.out.println("Prenume medic: " + p.getPrenumeMedic());
-//////                System.out.println("Adresa clinica: " + p.getAdresaClinica());
-//////                System.out.println("Data inceput Programare: " + p.getDataInceputProgramare());
-//////                System.out.println("Data sfarsit Programare: " + p.getDataSfarsitProgramare());
-//////                System.out.println("Numar cabinet: " + p.getNumarCabinet());
-//////                System.out.println("Pret consultatie: " + ((ProgramarePacient) p).getPret());
-//////                System.out.println();
-//////                System.out.println();
-//////
-//////            }
-//////            else if(p.getClass() == ProgramareMedic.class)
-//////            {
-//////                System.out.println("Nume pacient: " + p.getNumePacient());
-//////                System.out.println("Prenume pacient: " + p.getPrenumePacient());
-//////                System.out.println("Nume medic: " + p.getNumeMedic());
-//////                System.out.println("Prenume medic: " + p.getPrenumeMedic());
-//////                System.out.println("Adresa clinica: " + p.getAdresaClinica());
-//////                System.out.println("Data inceput Programare: " + p.getDataInceputProgramare());
-//////                System.out.println("Data sfarsit Programare: " + p.getDataSfarsitProgramare());
-//////                System.out.println("Numar cabinet: " + p.getNumarCabinet());
-//////                System.out.println("Descriere problema pacient: " + ((ProgramareMedic) p).getDescriereProblemaPacient());
-//////                System.out.println();
-//////                System.out.println();
-//////            }
-//////            else
-//////            {
-//////                System.out.println("Nume pacient: " + p.getNumePacient());
-//////                System.out.println("Prenume pacient: " + p.getPrenumePacient());
-//////                System.out.println("Nume medic: " + p.getNumeMedic());
-//////                System.out.println("Prenume medic: " + p.getPrenumeMedic());
-//////                System.out.println("Adresa clinica: " + p.getAdresaClinica());
-//////                System.out.println("Data inceput Programare: " + p.getDataInceputProgramare());
-//////                System.out.println("Data sfarsit Programare: " + p.getDataSfarsitProgramare());
-//////                System.out.println("Numar cabinet: " + p.getNumarCabinet());
-//////                System.out.println();
-//////                System.out.println();
-//////            }
-//////        }
-////
-////        //adaugareMedic();
-////        //adaugareCabinet();
-////        //creareFactura();
-////        //stocarePacienti();
-////        //plataAbonament();
-////        //Pacient p1 = new Pacient("alex","rosca","Masculin","29/09/2001","5010929374514","A","rosca@gmail.com","sat Crasna" );
-////        //Pacient p2 = new PacientAbonat("daniel","popa","Mascilin","19/09/1992","9483874344","B","daniel@yahoo.com","Sector 5","10/10/2020","10/10/2023","standard",10);
-////        //modificareDatePacient(p2);
-////
-////        //Medic medic = new Medic("grigore","andrei","Masculin","19/02/1980","312213213213123","andrei@gmail.com","VALCEA","neurolog");
-////        //modificareDateMedic(medic);
-////        //creareProgramare();
-//
-//    }
 }

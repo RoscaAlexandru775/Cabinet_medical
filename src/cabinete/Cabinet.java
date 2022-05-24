@@ -1,6 +1,6 @@
 package cabinete;
 
-public class Cabinet {
+public class Cabinet implements Comparable<Cabinet> {
     private int numar;
     private int etaj;
     private String Sectie;
@@ -37,5 +37,10 @@ public class Cabinet {
 
     public void setSectie(String sectie) {
         Sectie = sectie;
+    }
+
+    @Override
+    public int compareTo(Cabinet another) {
+        return Sectie.compareTo(another.Sectie);
     }
 }
